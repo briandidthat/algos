@@ -13,7 +13,7 @@ namespace algos
 
             Console.WriteLine(string.Join("-", array));
 
-            Sort.CountingSort(array);
+            Sort.InsertionSort(array);
 
             Console.WriteLine(string.Join("-", array));
         }
