@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace algos
 {
@@ -12,7 +13,7 @@ namespace algos
 
             Console.WriteLine(string.Join("-", array));
 
-            Sort.BubbleSort(array, n);
+            Sort.CountingSort(array);
 
             Console.WriteLine(string.Join("-", array));
         }

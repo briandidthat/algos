@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+
 namespace algos
 {
     public class Sort
@@ -24,6 +25,29 @@ namespace algos
 
                 if (swapped == false)
                     break;
+            }
+        }
+
+        public static void CountingSort(int[] arr)
+        {
+            int min = arr.Min();
+            int max = arr.Max();
+            int[] countArray = new int[(max - min) + 1];
+
+            for (int i = 0; i < arr.Length; i++)
+            {   
+                countArray[arr[i] - min]++;
+            }
+
+            int j = 0;
+
+            for (int i = min; i <= max; i++)
+            {
+                while (countArray[i - min] > 0)
+                {
+                    arr[j++] = i;
+                    countArray[i - min]--;
+                }
             }
         }
     }
