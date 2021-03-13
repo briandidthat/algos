@@ -72,5 +72,80 @@ namespace algos
                 arr[j + 1] = key;
             }
         }
+
+        public static void MergeSort(int[] arr, int l, int r)
+        {
+            if (l < r)
+            {
+                // find the middle point of array
+                int m = l + (r - l) / 2;
+
+                // sort the first half of array
+                MergeSort(arr, l, m);
+
+                // sort the second half of array
+                MergeSort(arr, m + 1, r);
+
+                // merge the sorted halves
+                Merge(arr, l, m, r);
+                
+            }
+        }
+
+        private static void Merge(int[] arr, int l, int m, int r)
+        {
+            // find and define the sizes of the 2 arrays to be merged
+            int n1 = m - l + 1;
+            int n2 = r - m;
+
+            // create temp arrays for data copying
+            int[] L = new int[n1];
+            int[] R = new int[n2];
+            // define iteration variables
+            int i, j;
+
+            // copy data to temp arrays
+            for (i = 0; i < n1; ++i)
+                L[i] = arr[l + i];
+            for (j = 0; j < n2; ++j)
+                R[j] = arr[m + 1 + j];
+
+            // reset iteration indices
+            i = 0;
+            j = 0;
+
+            int k = l;
+            while (i < n1 && j < n2)
+            {
+                if (L[i] <= R[j])
+                {
+                    arr[k] = L[i];
+                    i++;
+                }
+                else
+                {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // copy remaining elements of temp L[] array if any
+            while (i < n1)
+            {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+
+            // copy remaining elements of temp R[] array if any
+
+            while (j < n2)
+            {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
+        }
     }
 }
